@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS venue_db;
+CREATE DATABASE venue_db;
