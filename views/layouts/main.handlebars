@@ -5,16 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 
 
 <body>
-    <h1>User Registry</h1>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+    <h1 class="navbar-item">Venue Search</h1>
+    </div>
     {{#if logged_in}}
-    <nav>
-      <btn class="btn" id="logout">logout</btn>
-    </nav>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <btn id="logout">logout</btn>
+          </a>
+          {{else}}
+          <a class="button is-primary"> 
+            <btn id="signup"><strong>Sign Up</strong></btn>
+          </a>
+        </div>
+    </div>
+    </div>
     {{/if}}
+    </nav>
     {{{ body }}}
     {{#if logged_in}}
   <script src="/js/logout.js"></script>
