@@ -20,7 +20,7 @@ async function fetchAndDisplayArticles() {
 }
 
 async function fetchAndDisplayOneArticle(id) {
-  const url = `https://app.ticketmaster.com/discovery/v2/venues/KovZpZA6taAA.json?apikey=KhmZhazbRv5fZzhMfN38QaddApQaAfR0`;
+  const url = `https://app.ticketmaster.com/discovery/v2/venues/${id}.json?apikey=KhmZhazbRv5fZzhMfN38QaddApQaAfR0`;
   const options = {
     method: "GET",
     headers: {
@@ -31,8 +31,8 @@ async function fetchAndDisplayOneArticle(id) {
 
   const response = await fetch(url);
   const data = await response.json();
-  console.log("inside function",data);
-  return data._embedded.venues;
+  // console.log("inside function",data);
+  return data;
 }
 
 
@@ -53,7 +53,7 @@ router.get("/:id", withAuth, async (req, res) => {
     const result = await fetchAndDisplayOneArticle(req.params.id);
     console.log("this is the one: ", result);
 
-    res.render("homepage", { result, logged_in: req.session.logged_in });
+    res.render("venueDetail", { result, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
