@@ -6,7 +6,18 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
+
+
 <body>
+    <h1>User Registry</h1>
+    {{#if logged_in}}
+    <nav>
+      <btn class="btn" id="logout">logout</btn>
+    </nav>
+    {{/if}}
     {{{ body }}}
+    {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 </html>
