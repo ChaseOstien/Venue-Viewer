@@ -1,22 +1,42 @@
+
+<body>
 <section class="block" id="searchGroup">
     <div id="search-bar" class="container">
         <div class="field is-three-fifths">
-        <div class="control is-half">
-        <form>
+        <div class="control is-half"> 
+        <form class="search-form">
             <div id="input-group" class="columns">
-            <input id="movie-name" class="input is-danger is-rounded" type="text" placeholder="Venue Name" required>
-            <input id="release-year" class="input is-danger is-rounded" type="text" placeholder="Venue City">
-        
-            <!--We will need to pull the text value of this input field and append it to the URL of the next API call.-->
-        
-        <div id="submitButton1" class="control is-one-quarter">
-            <button type="button" id="submitButton" class="button is-dark is-focused js-modal-trigger">Search</button>
-            <!--Event listenter on this Api call will call the function wrapped around the next API call-->
+                <input id="keyword" class="input is-danger is-rounded" type="text" placeholder="Keyword" required>
+            <div id="submitButton1" class="control is-one-quarter">
+                <button type="button" id="submitButton" onclick="fetchAndDisplayArticles()" class="button is-dark is-focused js-modal-trigger">Search</button>
         </div>
     </div>
 </form>
     </div>
     </div>
         </div>
-    </div>
+
     </section>
+
+    
+
+<div id="container1">
+    
+</div>
+
+<script type="text/x-handlebars-template" id="template">
+<div>
+<h2>Hello World!</h2>
+    {{#each venues as |venue|}}
+            <p>{{venue.name}} - {{venue.id}}</p>
+        {{/each}}
+        </div>
+    </script>
+
+<script src="/js/search.js"></script>
+</body>
+
+
+
+
+<script src="/js/checkInput.js"></script>
