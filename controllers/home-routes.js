@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../models/");
+const { User, Comment } = require("../models/");
 const withAuth = require("../utils/auth");
 
 async function fetchAndDisplayArticles() {
@@ -13,10 +13,10 @@ async function fetchAndDisplayArticles() {
     },
   };
 
-    const response = await fetch(url);
-    const data = await response.json();
-    //console.log(data);
-    return data._embedded.venues;
+  const response = await fetch(url);
+  const data = await response.json();
+  //console.log(data);
+  return data._embedded.venues;
 }
 
 async function fetchAndDisplayOneArticle(id) {
@@ -35,25 +35,10 @@ async function fetchAndDisplayOneArticle(id) {
   return data;
 }
 
-
-
 router.get("/", withAuth, async (req, res) => {
   try {
     const result = await fetchAndDisplayArticles();
-    res.render("homepage", {result,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/:id", withAuth, async (req, res) => {
-  try {
-    const result = await fetchAndDisplayOneArticle(req.params.id);
-    console.log("this is the one: ", result);
-
-    res.render("venueDetail", { result, logged_in: req.session.logged_in });
+    res.render("homepage", { result, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -78,5 +63,34 @@ router.get("/signup", (req, res) => {
 
   res.render("signup");
 });
+
+
+
+router.get("/venue/:id", withAuth, async (req, res) => {
+  try {
+    const result = await fetchAndDisplayOneArticle(req.params.id);
+    //console.log("this is the one: ", result);
+    
+    const commentData = await Comment.findAll({
+      where: { venue_id: req.params.id+"/" },
+      include: [User],
+    });
+      const comments = commentData.map((comment) =>
+       comment.get({ plain: true })
+     );
+     console.log(comments);
+
+    res.render("venueDetail", {
+      result,
+      logged_in: req.session.logged_in,
+      comments,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 
 module.exports = router;
