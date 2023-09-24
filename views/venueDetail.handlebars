@@ -1,4 +1,29 @@
 <p>You have successfully logged in!</p>
 
-<a href={{result.id}}>{{result.id}}</a>
-<h2>{{{result.name}}}</h2>
+<div class="card">
+  <div class="">
+    <h2>
+      <a href="/venue/{{result.id}}">
+        <div class="">{{result.name}}</div>
+      </a>
+    </h2>
+    </div>
+  </div>  
+  <p class="">
+   {{result.name}}
+  </p>
+</div>
+<input type="hidden" name="post-id" value={{result.id}}/>
+
+<div class="card">
+  <div class="card-header"></div>
+  <form class="card-body" id="new-comment-form">
+    
+    <p class="form-label">Comment:</p>
+    <textarea class="form-input" id="comment-body" name="comment-body"></textarea>
+    <button type="submit" class="btn btn-primary">Submit:</button>
+  </form>
+{{> comments comments}}
+</div>
+
+<script src="/js/comment.js"></script>
