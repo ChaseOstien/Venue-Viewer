@@ -1,1 +1,11 @@
 <p>You have successfully logged in!</p>
+
+
+{{#each result as |data|}}
+
+<a href="/venue/{{data.id}}">{{data.id}}</a>
+<h2>{{{data.name}}}</h2>
+<img src={{data.mainImage.url}}></img>
+
+{{/each}}
+
