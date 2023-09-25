@@ -3,16 +3,50 @@
 <div class="card">
   <div class="">
     <h2>
-      <a href="/venue/{{result.id}}">
+      <a href={{result.url}}>
         <div class="">{{result.name}}</div>
       </a>
     </h2>
     </div>
   </div>  
   <p class="">
-   {{result.name}}
+   Address: {{result.address.line1}}, {{result.city.name}}, {{result.state.name}} {{result.postalCode}}
   </p>
+   <p class="">
+   Country: {{result.country.name}}
+  </p>
+  <!-- TO display general info if the api has it -->
+  {{#if result.generalInfo}}
+  <p class="">
+    GeneralInfo: 
+    <ul>
+      <li>GeneralRule: {{result.generalInfo.generalRule}}</li>
+      <li>Child Rule: {{result.generalInfo.childRule}}</li>
+    </ul>
+  </p>
+  {{else}}
+  <p class="">
+    GeneralInfo: 
+    <ul>
+      <li>GeneralRule: None</li>
+      <li>Child Rule: None</li>
+    </ul>
+  </p>
+  {{/if}}
+<!-- TO display parkingDetail if the api has it -->
+  {{#if result.parkingDetail}}
+   <p class="">
+   Parking Detail: {{result.parkingDetail}}
+  </p>
+  {{else}}
+   <p class="">
+   Parking Detail: No parking detail.
+  </p>
+  {{/if}}
+  <a href={{result.url}}>For Tickets</a>
 </div>
+
+<!--Comment space here -->
 <input type="hidden" name="post-id" value={{result.id}}/>
 
 <div class="card">
@@ -23,6 +57,7 @@
     <textarea class="form-input" id="comment-body" name="comment-body"></textarea>
     <button type="submit" class="btn btn-primary">Submit:</button>
   </form>
+<!-- use partials to handle the comments display -->
 {{> comments comments}}
 </div>
 

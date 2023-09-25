@@ -7,16 +7,17 @@
 
   <body>
     <h1>User Registry</h1>
+    <a href="/">Home</a>
     {{#if logged_in}}
       <nav>
         <btn class="btn" id="logout">logout</btn>
       </nav>
+    {{else}}
+      <a href="/login">LOGIN</a>
     {{/if}}
     {{{body}}}
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="/js/client.js"></script>
     {{/if}}
   </body>
 </html>
