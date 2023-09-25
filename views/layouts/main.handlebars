@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!--<script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
@@ -13,14 +12,8 @@
 
 
 <body>
-    <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-    <h1 class="navbar-item">Venue Search</h1>
-    </div>
     {{#if logged_in}}
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
+    
           <a class="button is-primary">
             <btn id="logout">logout</btn>
           </a>
@@ -32,7 +25,6 @@
     </div>
     </div>
     {{/if}}
-    </nav>
     {{{ body }}}
     {{#if logged_in}}
   <script src="/js/logout.js"></script>

@@ -1,42 +1,17 @@
 
-<body>
-<section class="block" id="searchGroup">
-    <div id="search-bar" class="container">
-        <div class="field is-three-fifths">
-        <div class="control is-half"> 
-        <form class="search-form">
-            <div id="input-group" class="columns">
-                <input id="keyword" class="input is-danger is-rounded" type="text" placeholder="Keyword" required>
-            <div id="submitButton1" class="control is-one-quarter">
-                <button type="button" id="submitButton" onclick="fetchAndDisplayArticles()" class="button is-dark is-focused js-modal-trigger">Search</button>
-        </div>
-    </div>
+<form class="card-body" id="search-form">
+
+    <input class="form-input" id="keyword" name="comment-body" required></input>
+    <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
 </form>
-    </div>
-    </div>
-        </div>
 
-    </section>
+    {{#each result as |data|}}
 
-    
+            <a href="/venue/{{data.id}}">{{data.id}}</a>
+            <h2>{{{data.name}}}</h2>
+            <img src={{data.mainImage.url}}></img>
 
-<div id="container1">
-    
-</div>
-
-<script type="text/x-handlebars-template" id="template">
-<div>
-<h2>Hello World!</h2>
-    {{#each venues as |venue|}}
-            <p>{{venue.name}} - {{venue.id}}</p>
         {{/each}}
-        </div>
-    </script>
 
 <script src="/js/search.js"></script>
-</body>
-
-
-
-
-<script src="/js/checkInput.js"></script>
+<!--<script src="/js/checkInput.js"></script>-->

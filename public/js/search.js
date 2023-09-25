@@ -1,41 +1,22 @@
-async function fetchAndDisplayArticles() {
-    try {
-        console.log('fetchAndDisplayArticles called');
-        let keyWord = document.querySelector('#keyword').value;
-        //const apiKey = process.env.API_KEY;
-        const url = `https://app.ticketmaster.com/discovery/v2/venues.json?keyword=${keyWord}&apikey=KhmZhazbRv5fZzhMfN38QaddApQaAfR0`;
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-        fetchDataAndRender(data);
-        return data._embedded.venues;
-        
-    }   catch (err) {
-        console.error(err);
-    }
-}
+const searchHandler = async (event) => {
+    event.preventDefault();
 
-function fetchDataAndRender(data) {
-    console.log('fetchDataAndRender called');
-    try {
-        
-        const venues = data._embedded.venues;
-        console.log('Data', venues);
-        // Compile the Handlebars template
-        const source = document.getElementById('template').innerHTML;
-        
-        console.log('Source', source);
-        const template = Handlebars.compile(source);
-        console.log('Template', template);
-        const renderedHtml = template({ venues });
-        console.log('Rendered HTML', renderedHtml);
+    const keyWord = document.querySelector('#keyword').value.trim();
+    //console.log(keyWord);
+    if (keyWord) {
+        const response = await fetch('/search', {
+            method: 'POST',
+            body: JSON.stringify({ keyWord }),
+            headers: { 'Content-Type': 'application/json' },
+            
+        });
+        console.log('response', response);
+        if (response.ok) {
+            document.location.replace('/search');
+          } else {
+            alert('');
+          }
+        }
+    };
 
-        // Render the template with the data and insert it into the specified element
-        const articlesContainer = document.getElementById('container1');
-        articlesContainer.innerHTML = renderedHtml;
-
-    } catch (error) {
-        console.error('Error fetching and rendering data:', error);
-    }
-};
-
+document.querySelector('#search-form').addEventListener('submit', searchHandler);
