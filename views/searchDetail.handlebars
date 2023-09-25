@@ -1,18 +1,17 @@
-<p>You have successfully logged in!</p>
+<h1>Search Result: </h1>
 
 <form class="card-body" id="search-form">
     
     <input class="form-input" id="keyword" name="comment-body" required></input>
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  </form>
+
 
 {{#each result as |data|}}
 
 <h2><a href="/venue/{{data.id}}">{{{data.name}}}</a></h2>
 <h3>Upcoming Events: {{data.upcomingEvents._total}}</h3>
 
-
 {{/each}}
 
 <script src="/js/search.js"></script>
-

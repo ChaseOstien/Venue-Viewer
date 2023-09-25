@@ -1,33 +1,23 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <!--<script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
 </head>
 
-
 <body>
+    <h1>User Registry</h1>
+    <a href="/">Home</a>
     {{#if logged_in}}
-    
-          <a class="button is-primary">
-            <btn id="logout">logout</btn>
-          </a>
-          {{else}}
-          <a class="button is-primary"> 
-            <btn id="signup"><strong>Sign Up</strong></btn>
-          </a>
-        </div>
-    </div>
-    </div>
+    <nav>
+      <btn class="btn" id="logout">logout</btn>
+    </nav>
+    {{else}}
+    <a href="/login">Login</a>
     {{/if}}
-    {{{ body }}}
+    {{{body}}}
     {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
 </html>

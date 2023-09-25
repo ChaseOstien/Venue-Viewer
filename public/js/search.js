@@ -1,22 +1,22 @@
 const searchHandler = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const keyWord = document.querySelector('#keyword').value.trim();
-    //console.log(keyWord);
-    if (keyWord) {
-        const response = await fetch('/search', {
-            method: 'POST',
-            body: JSON.stringify({ keyWord }),
-            headers: { 'Content-Type': 'application/json' },
-            
-        });
-        console.log('response', response);
-        if (response.ok) {
-            document.location.replace('/search');
-          } else {
-            alert('');
-          }
-        }
-    };
+  const keyword = document.querySelector("#keyword").value.trim();
+    console.log("keyword");
+  if (keyword) {
+    const response = await fetch("/search", {
+      method: "POST",
+      body: JSON.stringify({ keyword }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(keyword);
+    if (response.ok) {
+      console.log(keyword);
+      document.location.replace("/search/" + keyword);
+    } else {
+      alert("No result of the search!");
+    }
+  }
+};
 
-document.querySelector('#search-form').addEventListener('submit', searchHandler);
+document.querySelector("#search-form").addEventListener("submit", searchHandler);
