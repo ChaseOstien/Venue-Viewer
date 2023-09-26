@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const { User, Comment } = require("../models/");
 const withAuth = require("../utils/auth");
-require('dotenv').config();
+require("dotenv").config();
 //const fetchAndDisplayArticles = require('../public/js/fetchArticles.js');
 const apiKey = process.env.API_KEY;
 
 async function fetchAndDisplayArticles() {
   const url = `https://app.ticketmaster.com/discovery/v2/venues.json?apikey=${apiKey}`;
-  
+
   const response = await fetch(url);
   const data = await response.json();
   //console.log(data);
@@ -19,17 +19,17 @@ async function fetchAndDisplayOneArticle(id) {
 
   const response = await fetch(url);
   const data = await response.json();
-  console.log("inside function",data);
+  console.log("inside function", data);
   return data;
 }
 
 async function fetchAndDisplaySearchArticles(keyWord) {
-  const url =`https://app.ticketmaster.com/discovery/v2/venues.json?keyword=${keyWord}&apikey=${apiKey}`;
+  const url = `https://app.ticketmaster.com/discovery/v2/venues.json?keyword=${keyWord}&apikey=${apiKey}`;
 
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data._embedded.venues);
-    return data._embedded.venues;
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data._embedded.venues);
+  return data._embedded.venues;
 }
 
 router.get("/", withAuth, async (req, res) => {
@@ -59,7 +59,6 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-
 router.get("/venue/:id", withAuth, async (req, res) => {
   try {
     const result = await fetchAndDisplayOneArticle(req.params.id);
@@ -87,7 +86,8 @@ router.get("/search/:keyword", withAuth, async (req, res) => {
     console.log(req.params.keyword);
     const result = await fetchAndDisplaySearchArticles(req.params.keyword);
     //console.log(result);
-    res.render("homepage", {result, logged_in: req.session.logged_in });
+    console.log(req.session.logged_in);
+    res.render("homepage", { result, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
