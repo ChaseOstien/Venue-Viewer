@@ -6,7 +6,7 @@
         <p class="mt-2 text-lg leading-8 text-gray-600">See below for popular venues recomended by the Ticketmaster API.</p>
     </div>
     {{#each result as |data|}}
-    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-500 pt-10 sm:mt-16 sm:pt-16 lg:mx-1 lg:max-w-none lg:grid-cols-1">
+    <div class="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-500 pt-10 sm:mt-8 sm:pt-8 lg:mx-1 lg:max-w-none lg:grid-cols-1">
         
         <a href="/venue/{{data.id}}"> <article class="flex max-w-xl flex-col items-start justify-between">
         <div class="flex items-center gap-x-4 text-xs">
@@ -25,13 +25,14 @@
             </a>
             </h3>
         {{#if data.generalInfo.generalRule}}
-            <p style="max-width: 1000px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="mt-5 line-clamp-3 text-sm leading-6 overflow-hidden text-gray-600">{{data.generalInfo.generalRule}}</p>
+            <p style="text-overflow: ellipsis" class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600 lg:max-w-5xl md:max-w-lg sm:max-w-md max-w-md overflow-hidden whitespace-nowrap">{{data.generalInfo.generalRule}}</p>
         {{else}}
-            <p style="max-width: 1000px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="mt-5 line-clamp-3 text-sm leading-6 overflow-hidden text-gray-600">No general info to display!</p>
+            <p style="text-overflow: ellipsis;" class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600 lg:max-w-5xl md:max-w-lg sm:max-w-md max-w-md overflow-hidden whitespace-nowrap">No general info to display!</p>
         {{/if}}
         </div>
         <div class="relative mt-8 flex items-center gap-x-4">
             <div class="text-sm leading-6">
+                {{#if data.address.line1}}
             <p class="font-semibold text-gray-900">
                 <a href="/venue/{{data.id}}">
                 <span class="absolute inset-0"></span>
@@ -39,6 +40,15 @@
                 </a>
             </p>
             <p class="text-gray-600">{{data.address.line1}}, {{data.state.name}}, {{data.postalCode}}</p>
+            {{else}}
+            <p class="font-semibold text-gray-900">
+                <a href="/venue/{{data.id}}">
+                <span class="absolute inset-0"></span>
+                Address:
+                </a>
+            </p>
+            <p class="text-gray-600">No address to to display!</p>
+            {{/if}}
         </div>
         </div>
     </article>
