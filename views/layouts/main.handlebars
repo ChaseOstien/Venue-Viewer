@@ -2,17 +2,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="icon" type="image/png" sizes="20x20" href="/img/v-logo.png" />
+    <title>Venues</title>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.0.0/dist/tailwind.min.css">
     <link rel="stylesheet" src="../../public/css/style.css">
 </head>
 
 <body>
   
-
-    {{#if logged_in}}
+{{#if logged_in}}
 <header>
-<nav class="bg-gray-800">
+<nav class="bg-gray-500">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -40,12 +40,12 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+          <img class="h-10 w-auto" src="/img/vv.png" alt="Your Company">
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
+            <a href="/" class="hover:bg-gray-700 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
             <a href='#' id="logout" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</a>
           </div>
         </div>
@@ -54,9 +54,9 @@
 
         <form class="card-body" id="search-form">
     
-    <input class="form-input rounded" id="keyword" name="comment-body" placeholder="Type Keywords Here"></input>
+    <input class="form-input rounded pl-2" id="keyword" name="comment-body" placeholder="Type Keywords Here"></input>
     <button type="submit" class=" text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium btn mt-5 ml-2">Search</button>
-</form>
+
   </header>
     {{/if}}
     {{{body}}}
