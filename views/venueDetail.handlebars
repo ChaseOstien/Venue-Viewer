@@ -1,64 +1,73 @@
-<p>You have successfully logged in!</p>
-
-<div class="card">
-  <div class="">
-    <h2>
+<div class="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8">
+  <div class="px-4 sm:px-0">
+    <h3 class="text-base font-semibold leading-7 text-gray-900"> 
       <a href={{result.url}}>
         <div class="">{{result.name}}</div>
       </a>
-    </h2>
-    </div>
-  </div>  
-  <p class="">
-   Address: {{result.address.line1}}, {{result.city.name}}, {{result.state.name}} {{result.postalCode}}
-  </p>
-   <p class="">
-   Country: {{result.country.name}}
-  </p>
-  <!-- TO display general info if the api has it -->
+    </h3>
+    <br>
+    <a href={{result.url}}><button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+       Buy Tickets
+   </button></a>
+  </div>
+  <br>
+  <div class="mt-6 border-t border-gray-100">
+    <dl class="divide-y divide-gray-100">
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Address:</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> {{result.address.line1}}, {{result.city.name}}, {{result.state.name}} {{result.postalCode}}</dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Country:</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> {{result.country.name}}</dd>
+      </div>
+        <!-- TO display general info if the api has it -->
   {{#if result.generalInfo}}
-  <p class="">
-    GeneralInfo: 
-    <ul>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900"> General Info:  </dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">    
+          <ul>
       <li>GeneralRule: {{result.generalInfo.generalRule}}</li>
       <li>Child Rule: {{result.generalInfo.childRule}}</li>
     </ul>
-  </p>
+    </dd>
   {{else}}
-  <p class="">
-    GeneralInfo: 
-    <ul>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900"> GeneralInfo: </dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">   <ul>
       <li>GeneralRule: None</li>
       <li>Child Rule: None</li>
-    </ul>
-  </p>
-  {{/if}}
-<!-- TO display parkingDetail if the api has it -->
-  {{#if result.parkingDetail}}
-   <p class="">
-   Parking Detail: {{result.parkingDetail}}
-  </p>
-  {{else}}
-   <p class="">
-   Parking Detail: No parking detail.
-  </p>
-  {{/if}}
-  <a href={{result.url}}>For Tickets</a>
-</div>
-
-<!--Comment space here -->
+    </ul></dd>
+      {{/if}}
+      </div>
+      <!-- TO display parkingDetail if the api has it -->
+          {{#if result.parkingDetail}}
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Parking Detail:</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">    {{result.parkingDetail}}</dd>
+      </div>
+        {{else}}
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Parking Detail:</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">No parking detail.</dd>
+          {{/if}}
+      </div>
+      <!--Comment space here -->
 <input type="hidden" name="post-id" value={{result.id}}/>
-
 <div class="card">
   <div class="card-header"></div>
   <form class="card-body" id="new-comment-form">
-    
-    <p class="form-label">Comment:</p>
-    <textarea class="form-input" id="comment-body" name="comment-body" required></textarea>
-    <button type="submit" class="btn btn-primary">Submit:</button>
-  </form>
+  <br>
+<textarea id="comment-body" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 form-input" name="comment-body" placeholder="Write your thoughts here..." required></textarea>
+      <br>
+      <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 btn btn-primary">
+       Comment
+   </button>
+     </form>
+
 <!-- use partials to handle the comments display -->
 {{> comments comments}}
+</div>
 </div>
 
 <script src="/js/comment.js"></script>
