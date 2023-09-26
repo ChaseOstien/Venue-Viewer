@@ -2,7 +2,7 @@ const searchHandler = async (event) => {
   event.preventDefault();
 
   const keyword = document.querySelector("#keyword").value.trim();
-   console.log("keyword");
+    console.log("keyword");
   if (keyword) {
     const response = await fetch("/search", {
       method: "POST",
