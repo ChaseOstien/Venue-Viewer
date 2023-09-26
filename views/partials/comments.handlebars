@@ -1,9 +1,20 @@
- <div class="comments">
+<div class="w-full bg-white rounded-lg border p-2 my-4 mx-6 comments">
+          <h3 class="font-bold">Comments</h3>
   {{#each this}}
-  <div>
-    <p class="">
-    {{comment_content}} - {{user.username}} {{format_date date_created}}
-    </p>
-  </div>
-  {{/each}}
-</div>
+        <form>
+            <div class="flex flex-col">
+                <div class="border rounded-md p-3 ml-3 my-3">
+                    <div class="flex gap-3 items-center">
+                        <h3 class="font-bold">
+                            {{user.username}} 
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mt-2">
+                        {{comment_content}}
+                    </p>
+                    <p class="text-gray-600 mt-2">
+                       {{format_date date_created}}
+                    </p>
+                </div>
+                  {{/each}}
+            </div>
