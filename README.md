@@ -5,13 +5,14 @@
     <img src="https://img.shields.io/badge/HTML-blue" />
     <img src="https://img.shields.io/badge/CSS-orange" />
     <img src="https://img.shields.io/badge/node.js-green" />
-    <img src="https://img.shields.io/badge/dotenv-green" />
+    <img src="https://img.shields.io/badge/dotenv-red" />
     <img src="https://img.shields.io/badge/session-orange" />
     <img src="https://img.shields.io/badge/mySQL-blue"  />
     <img src="https://img.shields.io/badge/express-orange" />
     <img src="https://img.shields.io/badge/Sequelize-blue"  />
     <img src="https://img.shields.io/badge/MVC-yellow" />
     <img src="https://img.shields.io/badge/handlebars-red" />
+    <img src="https://img.shields.io/badge/tailwindcss-green" />
 </p>
 
 ## Description
