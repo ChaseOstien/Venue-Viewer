@@ -1,4 +1,4 @@
-<div class="w-full bg-white rounded-lg border p-2 my-4 mx-6 comments">
+<div class=" bg-white rounded-lg border p-2 my-4 mx-6 comments lg:max-w-5xl md:max-w-4xl sm:max-w-2xl max-w-lg">
           <h3 class="font-bold">Comments</h3>
   {{#each this}}
             <div class="flex flex-col">
@@ -15,5 +15,7 @@
                        {{format_date date_created}}
                     </p>
                 </div>
+                </div>
+                </form>
                   {{/each}}
             </div>
