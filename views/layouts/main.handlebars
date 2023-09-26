@@ -3,17 +3,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  </head>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.0.0/dist/tailwind.min.css">
+    <link rel="stylesheet" src="../../public/css/style.css">
+</head>
 
-  <body>
-    <h1>User Registry</h1>
-    <a href="/">Home</a>
+<body>
     {{#if logged_in}}
-      <nav>
-        <btn class="btn" id="logout">logout</btn>
-      </nav>
-    {{else}}
-      <a href="/login">LOGIN</a>
+    <nav>
+      <h1>User Registry</h1>
+    <a href="/">Home</a>
+      <btn class="btn" id="logout">logout</btn>
+    </nav>
     {{/if}}
     {{{body}}}
     {{#if logged_in}}
